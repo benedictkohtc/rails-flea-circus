@@ -1,0 +1,24 @@
+<h1>Flea</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Skill:</strong>
+  <%= @flea.skill %>
+</p>
+
+<p>
+  <strong>Dog:</strong>
+  <%= link_to @flea.dog.breed, @flea.dog %>
+</p>
+
+<p>
+  <strong><%= pluralize(@flea.circuses.count, "circuses") %></strong>
+  <ul>
+    <% @flea.circuses.each do |circus| %>
+      <li><%= link_to "#{circus.name} Circus", circus %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_flea_path(@flea) %> |
+<%= link_to 'Back', fleas_path %>

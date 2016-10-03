@@ -1,0 +1,28 @@
+<h1>Dog</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Breed:</strong>
+  <%= @dog.breed %>
+</p>
+
+<p>
+  <strong><%= pluralize(@dog.fleas.count, "fleas") %></strong>
+  <ul>
+    <% @dog.fleas.each do |flea| %>
+      <li><%= link_to "#{flea.skill} Flea", flea %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong><%= pluralize(@dog.circuses.count, "circuses") %></strong>
+  <ul>
+    <% @dog.circuses.each do |circus| %>
+      <li><%= link_to "#{circus.name} Circus", circus %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_dog_path(@dog) %> |
+<%= link_to 'Back', dogs_path %>

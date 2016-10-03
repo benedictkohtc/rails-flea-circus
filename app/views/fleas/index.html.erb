@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fleas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Skill</th>
+      <th>Dog</th>
+      <th>Circuses</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fleas.each do |flea| %>
+      <tr>
+        <td><%= flea.skill %></td>
+        <td><%= link_to flea.dog.breed, flea.dog %></td>
+        <td><%= flea.circuses.count %></td>
+        <td><%= link_to 'Show', flea %></td>
+        <td><%= link_to 'Edit', edit_flea_path(flea) %></td>
+        <td><%= link_to 'Destroy', flea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flea', new_flea_path %>

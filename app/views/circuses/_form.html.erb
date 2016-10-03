@@ -1,0 +1,26 @@
+<%= form_for(circus) do |f| %>
+  <% if circus.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(circus.errors.count, "error") %> prohibited this circus from being saved:</h2>
+
+      <ul>
+      <% circus.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+    <div class="field">
+    <%= f.label :fleas %>
+      <%= f.select :flea_ids, Flea.all.collect {|x| [x.skill, x.id]}, {}, :multiple => true %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

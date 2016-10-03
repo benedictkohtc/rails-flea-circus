@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  circus: one
+  flea: one
+
+two:
+  circus: two
+  flea: two

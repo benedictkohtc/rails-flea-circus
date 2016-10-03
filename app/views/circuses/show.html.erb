@@ -1,0 +1,29 @@
+<h1>Circus</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @circus.name %>
+</p>
+
+<p>
+  <strong><%= pluralize(@circus.fleas.count, "fleas") %></strong>
+  <ul>
+    <% @circus.fleas.each do |flea| %>
+      <li><%= link_to "#{flea.skill} Flea", flea %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong><%= pluralize(@circus.dogs.count, "dogs") %></strong>
+  <ul>
+    <% @circus.dogs.each do |dog| %>
+      <li><%= link_to "#{dog.name}", dog %></li>
+    <% end %>
+  </ul>
+</p>
+
+
+<%= link_to 'Edit', edit_circus_path(@circus) %> |
+<%= link_to 'Back', circuses_path %>
