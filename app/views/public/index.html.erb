@@ -14,14 +14,16 @@
 </p>
 
 <p>
-  <strong>A <%= link_to 'Circus', circuses_path %> <em>has_and_belongs_to_many</em> Fleas</strong>
+  <strong>A <%= link_to 'Circus', circuses_path %> <em>belongs_to</em> a User (whomever created it).
+  <br>It <em>has_and_belongs_to_many</em> Fleas</strong>
 </p>
 <p>
   We have <%= link_to "#{pluralize(@circuses, 'circus')}", circuses_path %>
 </p>
 <ul>
   <% Circus.all.each do |circus| %>
-    <li><%= link_to "#{circus.name}", circus_path(circus) %> has <%= pluralize(circus.fleas.count, 'flea') %></li>
+    <li><%= link_to "#{circus.name}", circus_path(circus) %>:
+      owned by <%= circus.user.try(:name) || "no one" %>, has <%= pluralize(circus.fleas.count, 'flea') %></li>
   <% end %>
 </ul>
 <p>
