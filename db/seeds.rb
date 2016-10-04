@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.find_or_create_by!(email: 'jeremiah@fakeemail.com') do |user|
+  user.first_name = 'Jeremiah'
+  user.family_name = 'Alexander'
+  user.is_admin = true
+  user.password = "password"
+  user.password_confirmation = "password"
+end
+
+puts "Finished DB seeding."

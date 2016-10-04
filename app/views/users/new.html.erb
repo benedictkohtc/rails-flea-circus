@@ -1,0 +1,38 @@
+<h2>Register</h2>
+<%= form_for @user, url: register_path do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@user.errors.count, "error") %> prohibited this blog from being saved:</h3>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, :required => true %>
+  </div>
+    <div class="field">
+      <%= f.label :family_name %>
+      <%= f.text_field :family_name, :required => true %>
+    </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :required => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Register" %>
+  </div>
+<% end %>

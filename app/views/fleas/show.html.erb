@@ -1,5 +1,4 @@
 <h1>Flea</h1>
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Skill:</strong>
@@ -21,4 +20,4 @@
 </p>
 
 <%= link_to 'Edit', edit_flea_path(@flea) %> |
-<%= link_to 'Back', fleas_path %>
+<%= link_to 'Back', dog_fleas_path(@flea.dog) %>

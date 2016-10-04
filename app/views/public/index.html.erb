@@ -1,20 +1,32 @@
-<p><strong>A <%= link_to 'Dog', dogs_path %> <em>has_many</em> <%= link_to 'fleas', fleas_path %>.</strong></p>
-<p>We have <%= link_to "#{pluralize(@dogs, 'dog')}", dogs_path %></p>
+<p>
+  <strong>A <%= link_to 'Dog', dogs_path %> <em>has_many</em> Fleas</strong>
+</p>
+<p>
+  We have <%= link_to "#{pluralize(@dogs, 'dog')}", dogs_path %>
+</p>
 <ul>
   <% Dog.all.each do |dog| %>
-    <li><%= link_to "#{dog.name}", dog_path(dog) %> has <%= pluralize(dog.fleas.count, 'flea') %></li>
+    <li><%= link_to "#{dog.name}", dog_path(dog) %> has <%= link_to pluralize(dog.fleas.count, 'flea'), dog_fleas_path(dog_id: dog.id) %></li>
   <% end %>
 </ul>
-<p>We have <%= link_to "#{pluralize(@fleas, 'flea')}", fleas_path %> in total</p>
+<p>
+  We have <%= pluralize(@fleas, 'flea') %> in total
+</p>
 
-<p><strong>A <%= link_to 'Circus', circuses_path %> <em>has_and_belongs_to_many</em> <%= link_to 'fleas', fleas_path %></strong></p>
-<p>We have <%= link_to "#{pluralize(@circuses, 'circus')}", circuses_path %></p>
+<p>
+  <strong>A <%= link_to 'Circus', circuses_path %> <em>has_and_belongs_to_many</em> Fleas</strong>
+</p>
+<p>
+  We have <%= link_to "#{pluralize(@circuses, 'circus')}", circuses_path %>
+</p>
 <ul>
   <% Circus.all.each do |circus| %>
     <li><%= link_to "#{circus.name}", circus_path(circus) %> has <%= pluralize(circus.fleas.count, 'flea') %></li>
   <% end %>
 </ul>
-<p><strong>A <%= link_to 'Dog', dogs_path %> <em>has_many</em> <%= link_to 'circuses', circuses_path %> <b>through</b> it's <%= link_to 'fleas', fleas_path %></strong></p>
+<p>
+  <strong>A <%= link_to 'Dog', dogs_path %> <em>has_many</em> <%= link_to 'circuses', circuses_path %> <b>through</b> its Fleas</strong>
+</p>
 <ul>
   <% Dog.all.each do |dog| %>
     <li><%= link_to "#{dog.name}", dog_path(dog) %> has <%= pluralize(dog.circuses.count, 'circus') %></li>

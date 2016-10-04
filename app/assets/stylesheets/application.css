@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ /* some temp CSS, TODO. move later */
+ .nav li {
+   display: inline-block;
+   padding-right: 10px;
+ }
+
+ .checkbox_container input {
+   display: inline;
+ }

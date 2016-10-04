@@ -9,8 +9,10 @@
   </head>
 
   <body>
-    <h1><%= link_to "The GA Flea Circus", root_path %></h1>
-    <hr>
-    <%= yield %>
+    <div class="container">
+      <%= render "partials/header" %>
+      <%= render "partials/flash" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

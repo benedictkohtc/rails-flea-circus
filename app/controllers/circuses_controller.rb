@@ -1,14 +1,15 @@
 class CircusesController < ApplicationController
+  before_action :is_authenticated
   before_action :set_circus, only: [:show, :edit, :update, :destroy]
+  before_action :can_edit, only: [:edit, :update, :destroy]
 
   # GET /circuses
-  # GET /circuses.json
   def index
     @circuses = Circus.all
+    # @circuses = current_user.circuses
   end
 
   # GET /circuses/1
-  # GET /circuses/1.json
   def show
   end
 
@@ -22,10 +23,9 @@ class CircusesController < ApplicationController
   end
 
   # POST /circuses
-  # POST /circuses.json
   def create
-    @circus = Circus.new(circus_params)
-
+    # new circus is assigned to current_user
+    @circus = current_user.circuses.new(circus_params)
     if @circus.save
       redirect_to @circus, notice: 'Circus was successfully created.'
     else
@@ -34,7 +34,6 @@ class CircusesController < ApplicationController
   end
 
   # PATCH/PUT /circuses/1
-  # PATCH/PUT /circuses/1.json
   def update
     if @circus.update(circus_params)
       redirect_to @circus, notice: 'Circus was successfully updated.'
@@ -44,7 +43,6 @@ class CircusesController < ApplicationController
   end
 
   # DELETE /circuses/1
-  # DELETE /circuses/1.json
   def destroy
     @circus.destroy
     redirect_to circuses_url, notice: 'Circus was successfully destroyed.'
@@ -59,5 +57,13 @@ class CircusesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def circus_params
       params.require(:circus).permit(:name, :flea_ids => [])
+    end
+
+    # decide who can edit a circus
+    def can_edit
+      unless current_user.is_admin? || @circus.belongs_to_user?(current_user)
+        flash[:danger] = "You do not have permission to do that!"
+        redirect_to circuses_path
+      end
     end
 end

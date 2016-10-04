@@ -1,11 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Circuses</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Creator</th>
       <th>Fleas</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +14,7 @@
     <% @circuses.each do |circus| %>
       <tr>
         <td><%= circus.name %></td>
+        <td><%= circus.user.try(:name) %></td>
         <td><%= circus.fleas.count %></td>
         <td><%= link_to 'Show', circus %></td>
         <td><%= link_to 'Edit', edit_circus_path(circus) %></td>

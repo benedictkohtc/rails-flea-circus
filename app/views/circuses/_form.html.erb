@@ -17,9 +17,10 @@
   </div>
 
     <div class="field">
-    <%= f.label :fleas %>
+      <strong><%= f.label :fleas %></strong>
       <%= f.select :flea_ids, Flea.all.collect {|x| [x.skill, x.id]}, {}, :multiple => true %>
     </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Fleas</h1>
+<h1><%= link_to @dog.name, @dog %>'s Fleas'</h1>
 
 <table>
   <thead>
@@ -28,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Flea', new_flea_path %>
+<%= link_to 'New Flea', new_dog_flea_path(@dog) %>

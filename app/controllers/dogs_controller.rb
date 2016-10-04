@@ -1,14 +1,13 @@
 class DogsController < ApplicationController
+  before_action :is_authenticated
   before_action :set_dog, only: [:show, :edit, :update, :destroy]
 
   # GET /dogs
-  # GET /dogs.json
   def index
     @dogs = Dog.all
   end
 
   # GET /dogs/1
-  # GET /dogs/1.json
   def show
   end
 
@@ -22,7 +21,6 @@ class DogsController < ApplicationController
   end
 
   # POST /dogs
-  # POST /dogs.json
   def create
     @dog = Dog.new(dog_params)
 
@@ -34,7 +32,6 @@ class DogsController < ApplicationController
   end
 
   # PATCH/PUT /dogs/1
-  # PATCH/PUT /dogs/1.json
   def update
     if @dog.update(dog_params)
       redirect_to @dog, notice: 'Dog was successfully updated.'
@@ -44,7 +41,6 @@ class DogsController < ApplicationController
   end
 
   # DELETE /dogs/1
-  # DELETE /dogs/1.json
   def destroy
     @dog.destroy
     redirect_to dogs_url, notice: 'Dog was successfully destroyed.'
