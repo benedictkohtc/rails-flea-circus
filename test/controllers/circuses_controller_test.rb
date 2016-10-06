@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CircusesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @circus = circuses(:one)
+    sign_in_user
+    @circus = circuses(:paris)
   end
 
   test "should get index" do

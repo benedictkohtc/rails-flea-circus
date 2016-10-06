@@ -1,4 +1,4 @@
-<%= form_for(flea) do |f| %>
+<%= form_for([dog,flea]) do |f| %>
   <% if flea.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(flea.errors.count, "error") %> prohibited this flea from being saved:</h2>

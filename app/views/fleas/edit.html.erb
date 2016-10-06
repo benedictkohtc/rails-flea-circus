@@ -1,6 +1,6 @@
 <h1>Editing Flea</h1>
 
-<%= render 'form', flea: @flea %>
+<%= render 'form', flea: @flea, dog: nil %>
 
 <%= link_to 'Show', @flea %> |
-<%= link_to 'Back', dog_fleas_path(@flea.dog) %>
+<%= link_to 'Back', dog_fleas_path(dog_id: @flea.dog.id) %>

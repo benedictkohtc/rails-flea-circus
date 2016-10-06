@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+poodle:
+  breed: "Poodle"
 
-one:
-  name: MyString
-  breed: MyString
-
-two:
-  name: MyString
-  breed: MyString
+pug:
+  breed: "Pug"

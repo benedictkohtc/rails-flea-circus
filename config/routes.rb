@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # RESOURCES
   resources :circuses
   resources :dogs do
-    resources :fleas#, shallow: true
+    resources :fleas, shallow: true
   end
 
 end

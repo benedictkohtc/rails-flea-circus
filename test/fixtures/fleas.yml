@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  skill: MyString
-  dog: one
+jumping:
+  skill: "Jumping"
+  dog: poodle
 
-two:
-  skill: MyString
-  dog: two
+swimming:
+  skill: "Swimming"
+  dog: pug

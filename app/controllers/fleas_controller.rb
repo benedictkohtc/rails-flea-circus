@@ -43,8 +43,9 @@ class FleasController < ApplicationController
 
   # DELETE /fleas/1
   def destroy
+    dog_id = @flea.dog
     @flea.destroy
-    redirect_to fleas_url, notice: 'Flea was successfully destroyed.'
+    redirect_to dog_fleas_url(dog_id: dog_id), notice: 'Flea was successfully destroyed.'
   end
 
   private

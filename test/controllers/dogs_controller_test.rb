@@ -2,7 +2,8 @@ require 'test_helper'
 
 class DogsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @dog = dogs(:one)
+    sign_in_user
+    @dog = dogs(:pug)
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class DogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create dog" do
     assert_difference('Dog.count') do
-      post dogs_url, params: { dog: { breed: @dog.breed, name: @dog.name } }
+      post dogs_url, params: { dog: { breed: @dog.breed} }
     end
 
     assert_redirected_to dog_url(Dog.last)
@@ -34,7 +35,7 @@ class DogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update dog" do
-    patch dog_url(@dog), params: { dog: { breed: @dog.breed, name: @dog.name } }
+    patch dog_url(@dog), params: { dog: { breed: @dog.breed } }
     assert_redirected_to dog_url(@dog)
   end
 

@@ -24,10 +24,8 @@ ActiveRecord::Schema.define(version: 20161004062327) do
   end
 
   create_table "circuses_fleas", force: :cascade do |t|
-    t.integer  "circus_id"
-    t.integer  "flea_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "circus_id"
+    t.integer "flea_id"
     t.index ["circus_id"], name: "index_circuses_fleas_on_circus_id", using: :btree
     t.index ["flea_id"], name: "index_circuses_fleas_on_flea_id", using: :btree
   end

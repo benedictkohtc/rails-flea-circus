@@ -1,5 +1,5 @@
 <h1>New Flea</h1>
 
-<%= render 'form', flea: @flea %>
+<%= render 'form', flea: @flea, dog: @dog %>
 
-<%= link_to 'Back', fleas_path %>
+<%= link_to 'Back', dog_fleas_path(dog_id: @dog.id) %>
