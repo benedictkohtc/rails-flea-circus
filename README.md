@@ -1,4 +1,4 @@
-https://codeship.com/projects/dfaa7ea0-6dc8-0134-6eb3-66a80b8b3db1/status?branch=master
+(https://codeship.com/projects/dfaa7ea0-6dc8-0134-6eb3-66a80b8b3db1/status?branch=master)
 
 # The Rails Flea Circus
 
