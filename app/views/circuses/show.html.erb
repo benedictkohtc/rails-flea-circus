@@ -1,5 +1,6 @@
 <h1>Circus</h1>
 
+<%= cl_image_tag(@circus.picture, :width => 400) unless @circus.picture.blank? %>
 <p>
   <strong>Name:</strong>
   <%= @circus.name %>

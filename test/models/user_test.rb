@@ -6,18 +6,28 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:normal)
   end
 
-  test "name must be present" do
-    @user.name = ""
+  test "first_name must be present" do
+    @user.first_name = ""
+    assert_not @user.valid?
+  end
+
+  test "first_name must not be too long" do
+    @user.first_name = "a" * 51
+    assert_not @user.valid?
+  end
+
+  test "family_name must be present" do
+    @user.family_name = ""
+    assert_not @user.valid?
+  end
+
+  test "family_name must not be too long" do
+    @user.family_name = "a" * 51
     assert_not @user.valid?
   end
 
   test "email must be present" do
     @user.email = ""
-    assert_not @user.valid?
-  end
-
-  test "name must not be too long" do
-    @user.name = "a" * 51
     assert_not @user.valid?
   end
 

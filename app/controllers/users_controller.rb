@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
-  
+
   # GET /profile
   def show
     @user = current_user

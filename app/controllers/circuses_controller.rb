@@ -26,7 +26,11 @@ class CircusesController < ApplicationController
   def create
     # new circus is assigned to current_user
     @circus = current_user.circuses.new(circus_params)
+
+    upload_file
+
     if @circus.save
+      delete_old_file
       redirect_to @circus, notice: 'Circus was successfully created.'
     else
       render :new
@@ -35,7 +39,10 @@ class CircusesController < ApplicationController
 
   # PATCH/PUT /circuses/1
   def update
+
+    upload_file
     if @circus.update(circus_params)
+      delete_old_file
       redirect_to @circus, notice: 'Circus was successfully updated.'
     else
       render :edit
@@ -44,11 +51,13 @@ class CircusesController < ApplicationController
 
   # DELETE /circuses/1
   def destroy
+    delete_old_file @circus.picture
     @circus.destroy
     redirect_to circuses_url, notice: 'Circus was successfully destroyed.'
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_circus
       @circus = Circus.find(params[:id])
@@ -56,7 +65,7 @@ class CircusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def circus_params
-      params.require(:circus).permit(:name, :flea_ids => [])
+      params.require(:circus).permit(:name, :picture, :flea_ids => [])
     end
 
     # decide who can edit a circus
@@ -65,5 +74,28 @@ class CircusesController < ApplicationController
         flash[:danger] = "You do not have permission to do that!"
         redirect_to circuses_path
       end
+    end
+
+    def upload_file
+      # upload file if specified in params
+      if params[:circus][:picture].present?
+        if @circus.valid?
+          # only save if the circus is valid to improve performance
+          uploaded_file = params[:circus][:picture].path
+          cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+          # save the reference to the old file and assign the new file to the instance
+          @old_file = @circus.picture
+          @circus.picture = cloudnary_file['public_id']
+        end
+        #remove image from the hash so we don't accidently use it
+        params[:circus].delete :picture
+      end
+    end
+
+    def delete_old_file old_file = nil
+      # was a file id passed in, if not check in an instance variable
+      file_to_del = old_file || @old_file
+      # if we had a previous file then delete it
+      Cloudinary::Uploader.destroy(file_to_del, :invalidate => true) unless file_to_del.blank?
     end
 end

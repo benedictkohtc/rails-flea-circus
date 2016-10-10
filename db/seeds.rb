@@ -6,12 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.find_or_create_by!(email: 'jeremiah@fakeemail.com') do |user|
+#
+User.find_or_create_by!(email: ENV["admin_email"]) do |user|
   user.first_name = 'Jeremiah'
   user.family_name = 'Alexander'
   user.is_admin = true
-  user.password = "password"
-  user.password_confirmation = "password"
+  user.password = ENV["admin_password"]
+  user.password_confirmation = ENV["admin_password"]
 end
 
 puts "Finished DB seeding."
