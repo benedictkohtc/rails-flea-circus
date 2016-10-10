@@ -9,4 +9,5 @@
 - A Flea has_and_belongs_to_many circuses
 - A Dog has_many circuses through it's fleas
 - A Circus has_many dogs through it's fleas
+- A Circus has an image stored on Cloudinary
 - There are no cats
