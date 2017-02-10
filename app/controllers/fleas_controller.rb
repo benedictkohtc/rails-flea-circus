@@ -10,6 +10,7 @@ class FleasController < ApplicationController
 
   # GET /fleas/1
   def show
+    new_vote(@flea)
   end
 
   # GET /fleas/new

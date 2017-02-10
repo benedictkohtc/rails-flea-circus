@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     resources :fleas, shallow: true
   end
 
+  resources :votes, only: [:create, :update, :destroy]
+
 end

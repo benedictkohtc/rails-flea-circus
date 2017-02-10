@@ -11,6 +11,8 @@ class CircusesController < ApplicationController
 
   # GET /circuses/1
   def show
+    # create a new vote here
+    new_vote(@circus)
   end
 
   # GET /circuses/new

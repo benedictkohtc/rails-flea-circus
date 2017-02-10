@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     return @current_user
   end
 
+  def new_vote(votable)
+    @vote = votable.votes.find_or_initialize_by(:user_id => current_user.id) if current_user
+  end
+
   # Methods defined as helper_methods are available in the views
   # ------------------------------------------------------------
   helper_method :current_user

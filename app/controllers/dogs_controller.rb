@@ -9,6 +9,7 @@ class DogsController < ApplicationController
 
   # GET /dogs/1
   def show
+    new_vote(@dog)
   end
 
   # GET /dogs/new

@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   # ASSOCIATIONS
   has_many :circuses, dependent: :nullify
+  has_many :ratings, class_name: 'Vote'
+  has_many :votes, as: :votable
 
   # VALIDATIONS
   validates :first_name,

@@ -1,0 +1,14 @@
+<div class="well">
+  <h3>Votes (<%= votes.count %>)</h3>
+  <h4><%= average_vote(votes) %></h4>
+  <div>
+    <%= form_for(@vote) do |f| %>
+      <%= f.hidden_field :votable_id %>
+      <%= f.hidden_field :votable_type %>
+      <% (0..5).each do |i| %>
+        <%= f.radio_button :value, i %> <%= i %>
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

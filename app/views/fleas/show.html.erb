@@ -19,5 +19,7 @@
   </ul>
 </p>
 
+<%= render 'partials/votes', votes: @flea.votes %>
+
 <%= link_to 'Edit', edit_flea_path(@flea) %> |
 <%= link_to 'Back', dog_fleas_path(@flea.dog) %>

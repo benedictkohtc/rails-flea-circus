@@ -24,6 +24,8 @@
   </ul>
 </p>
 
+<%= render 'partials/votes', votes: @circus.votes %>
+
 
 <%= link_to 'Edit', edit_circus_path(@circus) %> |
 <%= link_to 'Back', circuses_path %>

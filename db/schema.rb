@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010063113) do
+ActiveRecord::Schema.define(version: 20170208052754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20161010063113) do
   end
 
   create_table "circuses_fleas", force: :cascade do |t|
-    t.integer "circus_id"
-    t.integer "flea_id"
+    t.integer  "circus_id"
+    t.integer  "flea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["circus_id"], name: "index_circuses_fleas_on_circus_id", using: :btree
     t.index ["flea_id"], name: "index_circuses_fleas_on_flea_id", using: :btree
   end
@@ -56,8 +58,20 @@ ActiveRecord::Schema.define(version: 20161010063113) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
+  end
+
   add_foreign_key "circuses", "users"
   add_foreign_key "circuses_fleas", "circuses"
   add_foreign_key "circuses_fleas", "fleas"
   add_foreign_key "fleas", "dogs"
+  add_foreign_key "votes", "users"
 end

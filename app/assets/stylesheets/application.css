@@ -23,3 +23,12 @@
  .checkbox_container input {
    display: inline;
  }
+
+ .well {
+   padding: 5px 20px;
+   background-color: whitesmoke;
+   border-radius: 15px;
+ }
+ .well form {
+   padding: 10px;
+ }
